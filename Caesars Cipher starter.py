@@ -104,6 +104,22 @@ class Message(object):
         '''
         pass #delete this line and replace with your code here
 
+        self.dict = {}
+
+
+        len_l = len(string.ascii_lowercase)
+        len_u = len(string.ascii_uppercase)
+        lower = (string.ascii_lowercase)
+        upper = (string.ascii_uppercase)
+
+        for i in range(lower) : #0..25
+            dict[lower[i]] = lower[i + shift]  #ToDo: wrap around
+        #print(dict) 
+
+
+        # print(string.ascii_lowercase)
+        # print(string.ascii_uppercase)
+
     def apply_shift(self, shift):
         '''
         Applies the Caesar Cipher to self.message_text with the input shift.
@@ -117,6 +133,45 @@ class Message(object):
              down the alphabet by the input shift
         '''
         pass #delete this line and replace with your code here
+
+        s = ''
+        for every letter in self.message_text
+        if letter is lower or upper
+                then shift letter 
+                1) you need self.build_shift_dict
+                2) look up the letter
+                3) replace letter with the shifted from dict[letter]
+
+
+                s += letter
+
+        otherwise the letter must be punctuation
+        so dont shift it, just keep
+        
+        s += letter
+        
+
+
+
+        check for punctuation
+        if letter in string.punctuation
+            or letter in string.digits
+            or letter in string.whitespace
+        
+            then dont shift it
+            
+            otherwise it must be a letter
+            so shift it
+
+        return s
+
+m = Message('happy')
+d = m.build_shift_dict(3) 
+m.build_shift_dict(3)
+print(d)  
+
+shifted_text = m.apply_shift(3)
+print(shifted_text) #kdSSp !!!!
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
@@ -138,6 +193,12 @@ class PlaintextMessage(Message):
         '''
         pass #delete this line and replace with your code here
 
+        super.__innit__(self, text)
+        self.shift = shift
+        self.encrypting_dict = just call self.build
+        self.message_text_encrypted = just call self.apply
+
+
     def get_shift(self):
         '''
         Used to safely access self.shift outside of the class
@@ -146,6 +207,8 @@ class PlaintextMessage(Message):
         '''
         pass #delete this line and replace with your code here
 
+        
+
     def get_encrypting_dict(self):
         '''
         Used to safely access a copy self.encrypting_dict outside of the class
@@ -153,6 +216,9 @@ class PlaintextMessage(Message):
         Returns: a COPY of self.encrypting_dict
         '''
         pass #delete this line and replace with your code here
+
+        #just use .copy()
+        dict().
 
     def get_message_text_encrypted(self):
         '''
@@ -174,6 +240,19 @@ class PlaintextMessage(Message):
         Returns: nothing
         '''
         pass #delete this line and replace with your code here
+
+        self.shift = shift
+        rebuild/update self.encrypting_dict using self.build 
+        apply new shift to self.message_text_encrypted self.apply...............
+        
+# test case for p2
+p = PlaintextMessage('Happy ???', 3)
+p.change_shift(3)
+print(p.get_message_text())
+p.change_shift(4)
+print(p.get_message_text())
+
+
 
 class CiphertextMessage(Message):
     def __init__(self, text):
